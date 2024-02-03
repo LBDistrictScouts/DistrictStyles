@@ -1,0 +1,12 @@
+{
+    "name": "DistrictStyle",
+    "version": "0.1.0",
+    "description": "SCSS & Bootstrap Styles for District Projects.",
+    "main": "index.js",
+    "author": "Jacob Tyler <JacobAGTyler@users.noreply.github.com>",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "bootstrap": "^5.3.2"
+    }
+}
