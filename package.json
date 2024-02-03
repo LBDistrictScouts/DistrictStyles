@@ -1,5 +1,5 @@
 {
-    "name": "DistrictStyle",
+    "name": "district-styles",
     "version": "0.1.0",
     "description": "SCSS & Bootstrap Styles for District Projects.",
     "main": "index.js",
