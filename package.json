@@ -1,6 +1,6 @@
 {
     "name": "district-styles",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "SCSS & Bootstrap Styles for District Projects.",
     "main": "index.js",
     "author": "Jacob Tyler <JacobAGTyler@users.noreply.github.com>",
