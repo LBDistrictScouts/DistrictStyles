@@ -1,11 +1,11 @@
 
-@import "custom-bootstrap";
-@import "variables";
+@use "custom-bootstrap";
+@use "variables";
 
-@import "layout";
-@import "navbar";
-@import "topbar";
-@import "parallax-image";
-@import "footer";
-@import "box";
-@import "header-image";
+@use "layout";
+@use "navbar";
+@use "topbar";
+@use "parallax-image";
+@use "footer";
+@use "box";
+@use "header-image";
