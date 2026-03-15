@@ -1,8 +1,9 @@
 
-@use "custom-bootstrap";
 @use "variables";
+@use "custom-bootstrap";
 
 @use "layout";
+@use "page-shell";
 @use "navbar";
 @use "topbar";
 @use "parallax-image";
