@@ -1,10 +1,10 @@
-# @lbd-scouts/district-styles
+# @lbdistrictscouts/district-styles
 
 Bootstrap-based SCSS styles for LB District Scout projects. Ships both prebuilt CSS and SCSS source so consuming projects can either drop in the compiled stylesheet or apply local overrides.
 
 ## Installing from GitHub Packages
 
-### 1. Configure your project to use GitHub Packages for the `@lbd-scouts` scope
+### 1. Configure your project to use GitHub Packages for the `@lbdistrictscouts` scope
 
 Add or update `.yarnrc.yml` in your consuming project:
 
@@ -12,7 +12,7 @@ Add or update `.yarnrc.yml` in your consuming project:
 nodeLinker: node-modules
 
 npmScopes:
-  lbd-scouts:
+  lbdistrictscouts:
     npmRegistryServer: "https://npm.pkg.github.com"
     npmAlwaysAuth: true
 ```
@@ -30,7 +30,7 @@ For CI/CD, store the token as a repository secret and pass it via the environmen
 ### 3. Install
 
 ```bash
-yarn add @lbd-scouts/district-styles
+yarn add @lbdistrictscouts/district-styles
 ```
 
 ## Usage
@@ -39,13 +39,13 @@ yarn add @lbd-scouts/district-styles
 
 ```ts
 // In your app entry point (e.g. main.tsx / index.tsx)
-import '@lbd-scouts/district-styles/css';
+import '@lbdistrictscouts/district-styles/css';
 ```
 
 Or reference the file directly:
 
 ```ts
-import '@lbd-scouts/district-styles/dist/css/district-styles.css';
+import '@lbdistrictscouts/district-styles/dist/css/district-styles.css';
 ```
 
 ### React — SCSS override pattern
@@ -60,7 +60,7 @@ $primary: #ff6600;
 $font-family-sans-serif: "Inter", system-ui, sans-serif;
 
 // 2. Import the library entrypoint (compiles Bootstrap + district styles)
-@use "@lbd-scouts/district-styles/scss";
+@use "@lbdistrictscouts/district-styles/scss";
 ```
 
 **Vite example** (`vite.config.ts`):
@@ -79,12 +79,41 @@ export default defineConfig({
 });
 ```
 
+### Page shell variants
+
+The package includes a reusable shell and surface treatment for branded landing pages:
+
+```html
+<div class="lbd-page-shell lbd-page-shell--vivid lbd-page-shell--topography">
+  <main class="container-fluid">
+    <section class="lbd-page-surface">...</section>
+  </main>
+</div>
+```
+
+Available modifiers:
+
+- `lbd-page-shell--vivid`: stronger district colour wash
+- `lbd-page-shell--topography`: larger, softer repeated topography pattern
+- `lbd-page-shell--topography-dense`: smaller, higher-density topography pattern
+- `lbd-page-shell--plum`: alternate primary-led colourway using the district purple
+
+You can also mix and match with local overrides by setting CSS variables on `.lbd-page-shell`, for example:
+
+```scss
+.lbd-page-shell {
+  --lbd-page-shell-topography-size: 420px;
+  --lbd-page-shell-topography-opacity: 0.7;
+  --lbd-page-shell-topography-rotation: 4deg;
+}
+```
+
 ### CakePHP — copy `dist/` into webroot
 
 If you are not running a JS build pipeline on the PHP side, copy the compiled assets during your deploy step:
 
 ```bash
-cp -r node_modules/@lbd-scouts/district-styles/dist/ webroot/district-styles/
+cp -r node_modules/@lbdistrictscouts/district-styles/dist/ webroot/district-styles/
 ```
 
 Then include the stylesheet in your layout:
@@ -111,10 +140,10 @@ Or use the minified variant for production:
 
 | Import specifier | Resolves to |
 |-----------------|-------------|
-| `@lbd-scouts/district-styles/css` | `dist/css/district-styles.css` |
-| `@lbd-scouts/district-styles/css/min` | `dist/css/district-styles.min.css` |
-| `@lbd-scouts/district-styles/scss` | `scss/style.scss` |
-| `@lbd-scouts/district-styles/scss/*` | `scss/*` |
+| `@lbdistrictscouts/district-styles/css` | `dist/css/district-styles.css` |
+| `@lbdistrictscouts/district-styles/css/min` | `dist/css/district-styles.min.css` |
+| `@lbdistrictscouts/district-styles/scss` | `scss/style.scss` |
+| `@lbdistrictscouts/district-styles/scss/*` | `scss/*` |
 
 ## Development
 
