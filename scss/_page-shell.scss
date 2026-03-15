@@ -20,7 +20,7 @@
     radial-gradient(circle at bottom right, rgba($colour-secondary, 0.2), transparent 45%),
     linear-gradient(135deg, rgba(245, 251, 247, 0.96), rgba(228, 244, 237, 0.92)),
     url("./assets/topography.svg");
-  background-size: auto, auto, auto, 720px;
+  background-size: auto, auto, auto, 520px;
   background-position: top left, bottom right, center, center;
   background-repeat: no-repeat, no-repeat, no-repeat, repeat;
   opacity: 0.95;
@@ -36,7 +36,13 @@
 .lbd-page-surface {
   border: 1px solid rgba($colour-success, 0.12);
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 1.5rem 3rem rgba(17, 70, 44, 0.08);
   backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1400px) {
+  .lbd-page-shell::before {
+    background-size: auto, auto, auto, 460px;
+  }
 }
