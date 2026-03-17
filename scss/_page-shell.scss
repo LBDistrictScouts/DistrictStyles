@@ -1,37 +1,107 @@
 @use "variables" as *;
 
 .lbd-page-shell {
+  --lbd-page-shell-base-wash-start: #{rgba($colour-secondary, 0.1)};
+  --lbd-page-shell-base-wash-end: #{rgba($colour-success, 0.08)};
+  --lbd-page-shell-radial-start: #{rgba($colour-success, 0.2)};
+  --lbd-page-shell-radial-end: #{rgba($colour-secondary, 0.2)};
+  --lbd-page-shell-overlay-start: rgba(245, 251, 247, 0.78);
+  --lbd-page-shell-overlay-end: rgba(228, 244, 237, 0.68);
+  --lbd-page-shell-topography-size: 520px;
+  --lbd-page-shell-topography-size-xl: 460px;
+  --lbd-page-shell-topography-opacity: 0.5;
+  --lbd-page-shell-topography-rotation: 0deg;
+  --lbd-page-shell-topography-scale: 1;
   position: relative;
   min-height: 100vh;
   padding: 1.5rem 0 3rem;
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(135deg, rgba($colour-secondary, 0.1), rgba($colour-success, 0.08)),
+    linear-gradient(135deg, var(--lbd-page-shell-base-wash-start), var(--lbd-page-shell-base-wash-end)),
     #f6fbf8;
 }
 
 .lbd-page-shell::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at top left, rgba($colour-success, 0.2), transparent 42%),
-    radial-gradient(circle at bottom right, rgba($colour-secondary, 0.2), transparent 45%),
-    linear-gradient(135deg, rgba(245, 251, 247, 0.96), rgba(228, 244, 237, 0.92)),
-    url("./assets/topography.svg");
-  background-size: auto, auto, auto, 720px;
-  background-position: top left, bottom right, center, center;
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    radial-gradient(circle at top left, var(--lbd-page-shell-radial-start), transparent 42%),
+    radial-gradient(circle at bottom right, var(--lbd-page-shell-radial-end), transparent 45%),
+    linear-gradient(135deg, var(--lbd-page-shell-overlay-start), var(--lbd-page-shell-overlay-end));
+  background-size: auto, auto, auto;
+  background-position: top left, bottom right, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
   opacity: 0.95;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
+}
+
+.lbd-page-shell::after {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  background-image: url("../assets/topography.svg");
+  background-size: var(--lbd-page-shell-topography-size);
+  background-position: center;
+  background-repeat: repeat;
+  opacity: var(--lbd-page-shell-topography-opacity);
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(var(--lbd-page-shell-topography-rotation)) scale(var(--lbd-page-shell-topography-scale));
+  transform-origin: center;
+}
+
+.lbd-page-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.lbd-page-shell--vivid {
+  --lbd-page-shell-base-wash-start: #{rgba($colour-secondary, 0.16)};
+  --lbd-page-shell-base-wash-end: #{rgba($colour-success, 0.13)};
+  --lbd-page-shell-radial-start: #{rgba($colour-success, 0.3)};
+  --lbd-page-shell-radial-end: #{rgba($colour-secondary, 0.3)};
+  --lbd-page-shell-overlay-start: rgba(244, 250, 246, 0.62);
+  --lbd-page-shell-overlay-end: rgba(220, 240, 231, 0.52);
+}
+
+.lbd-page-shell--topography {
+  --lbd-page-shell-topography-size: 600px;
+  --lbd-page-shell-topography-size-xl: 520px;
+  --lbd-page-shell-topography-opacity: 0.65;
+  --lbd-page-shell-topography-rotation: 7deg;
+  --lbd-page-shell-topography-scale: 1.08;
+}
+
+.lbd-page-shell--topography-dense {
+  --lbd-page-shell-topography-size: 280px;
+  --lbd-page-shell-topography-size-xl: 240px;
+  --lbd-page-shell-topography-opacity: 0.9;
+  --lbd-page-shell-topography-rotation: 7deg;
+  --lbd-page-shell-topography-scale: 1.08;
+}
+
+.lbd-page-shell--plum {
+  --lbd-page-shell-base-wash-start: #{rgba($colour-primary, 0.14)};
+  --lbd-page-shell-base-wash-end: #{rgba($colour-secondary, 0.1)};
+  --lbd-page-shell-radial-start: #{rgba($colour-primary, 0.24)};
+  --lbd-page-shell-radial-end: #{rgba($colour-secondary, 0.24)};
+  --lbd-page-shell-overlay-start: rgba(248, 244, 251, 0.74);
+  --lbd-page-shell-overlay-end: rgba(233, 239, 246, 0.58);
 }
 
 .lbd-page-surface {
   border: 1px solid rgba($colour-success, 0.12);
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 1.5rem 3rem rgba(17, 70, 44, 0.08);
   backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1400px) {
+  .lbd-page-shell::after {
+    background-size: var(--lbd-page-shell-topography-size-xl);
+  }
 }

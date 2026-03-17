@@ -1,0 +1,1 @@
+-- DistrictUI plugin test schema placeholder.

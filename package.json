@@ -17,6 +17,7 @@
     },
     "files": [
         "dist/**",
+        "assets/**",
         "scss/**",
         "README.md",
         "LICENSE"
@@ -26,21 +27,30 @@
         "./css/min": "./dist/css/district-styles.min.css",
         "./dist/css/district-styles.css": "./dist/css/district-styles.css",
         "./dist/css/district-styles.min.css": "./dist/css/district-styles.min.css",
+        "./dist/assets/*": "./dist/assets/*",
         "./scss": "./scss/style.scss",
-        "./scss/*": "./scss/*"
+        "./scss/*": "./scss/*",
+        "./assets/*": "./assets/*"
     },
     "scripts": {
         "clean": "rimraf dist",
+        "build:assets": "mkdir -p dist/assets && cp -R assets/. dist/assets/",
         "build:css": "sass scss/style.scss dist/css/district-styles.css --style=expanded --source-map --load-path=node_modules --load-path=node_modules/bootstrap/scss",
         "build:css:min": "sass scss/style.scss dist/css/district-styles.min.css --style=compressed --no-source-map --load-path=node_modules --load-path=node_modules/bootstrap/scss",
-        "build": "yarn clean && yarn build:css && yarn build:css:min",
+        "build": "yarn clean && yarn build:assets && yarn build:css && yarn build:css:min",
+        "test:styles:build": "yarn build && node tests/styles/verify-build.mjs",
+        "test:styles:ui": "playwright test -c playwright.styles.config.mjs",
+        "test:styles": "yarn test:styles:build && yarn test:styles:ui",
+        "test": "yarn test:styles",
         "prepublishOnly": "yarn build"
     },
     "dependencies": {
         "@popperjs/core": "^2.11.8",
-        "bootstrap": "^5.3.8"
+        "bootstrap": "^5.3.8",
+        "bootstrap-icons": "^1.11.3"
     },
     "devDependencies": {
+        "@playwright/test": "^1.54.2",
         "rimraf": "^6.1.3",
         "sass": "^1.98.0"
     }
