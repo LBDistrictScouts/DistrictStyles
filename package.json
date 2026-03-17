@@ -35,8 +35,8 @@
     "scripts": {
         "clean": "rimraf dist",
         "build:assets": "mkdir -p dist/assets && cp -R assets/. dist/assets/",
-        "build:css": "sass scss/style.scss dist/css/district-styles.css --style=expanded --source-map --load-path=node_modules --load-path=node_modules/bootstrap/scss",
-        "build:css:min": "sass scss/style.scss dist/css/district-styles.min.css --style=compressed --no-source-map --load-path=node_modules --load-path=node_modules/bootstrap/scss",
+        "build:css": "sass scss/style.scss dist/css/district-styles.css --style=expanded --source-map --quiet-deps --load-path=node_modules --load-path=node_modules/bootstrap/scss",
+        "build:css:min": "sass scss/style.scss dist/css/district-styles.min.css --style=compressed --no-source-map --quiet-deps --load-path=node_modules --load-path=node_modules/bootstrap/scss",
         "build": "yarn clean && yarn build:assets && yarn build:css && yarn build:css:min",
         "test:styles:build": "yarn build && node tests/styles/verify-build.mjs",
         "test:styles:ui": "playwright test -c playwright.styles.config.mjs",
