@@ -1,7 +1,6 @@
 {
     "name": "lbdistrictscouts/district-ui",
     "description": "DistrictUI CakePHP plugin",
-    "version": "0.1.x-dev",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
