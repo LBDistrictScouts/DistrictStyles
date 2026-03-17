@@ -221,7 +221,7 @@ git tag v0.2.0
 git push origin v0.2.0
 ```
 
-The GitHub Actions workflow (`.github/workflows/publish.yml`) will run `yarn build` and `yarn npm publish` using the built-in `GITHUB_TOKEN`.
+The GitHub Actions workflow ([`ci-cd.yml`](/Users/jacob/Development/district-styles/.github/workflows/ci-cd.yml)) will run the Yarn test/build commands and publish using the built-in `GITHUB_TOKEN`.
 
 ## Plugin asset build
 
